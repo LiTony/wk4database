@@ -51,6 +51,22 @@ async function findUserByJob(job){
     return await userModel.find({'job':job});
 }
 
+async function findUserByNameJob(name, job){
+    return await userModel.find({ 'name':name, 'job':job});
+}
+
+async function findUserByIdAndDelete(id)
+{
+    try{
+        return await userModel.findByIdAndDelete(id);
+    }catch(error) {
+        console.log(error);
+        return undefined;
+    }
+}
+
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
 exports.addUser = addUser;
+exports.findUserByNameJob = findUserByNameJob;
+exports.findUserByIdAndDelete = findUserByIdAndDelete;
